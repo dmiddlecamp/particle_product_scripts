@@ -1,0 +1,9 @@
+{
+  "name": "getSimUsage",
+  "version": "0.0.1",
+  "dependencies": {
+    "extend": "^3.0.0",
+    "request": "^2.81.0",
+    "when": "^3.7.8"
+  }
+}

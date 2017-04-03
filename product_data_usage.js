@@ -6,8 +6,8 @@ var settings = require('./settings.js');
 var getListSimsUrl = function(id, token) {
 	return "https://api.particle.io/v1/products/"+id+"/sims?access_token="+token;
 };
-var getUsageUrl = function(iccid, token) {
-	return "https://api.particle.io/v1/products/544/sims/"+iccid+"/data_usage?access_token=" + token;
+var getUsageUrl = function(product_id, iccid, token) {
+	return "https://api.particle.io/v1/products/"+product_id+"/sims/"+iccid+"/data_usage?access_token=" + token;
 };
 
 var promiseGetUrl = function(url) {
@@ -34,7 +34,7 @@ pipeline([
 		var promises = [];
 		for(var i=0;i<sims.length;i++) {
 			var iccid = sims[i]._id;
-			var url = getUsageUrl(iccid, settings.access_token);
+			var url = getUsageUrl(settings.product_id, iccid, settings.access_token);
 			var promise = promiseGetUrl(url);
 			promises.push(promise);
 		}
